@@ -7,3 +7,4 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const { notFound, errorHandler } = require('./middleware/errorHandler');
 
+const app = express();
