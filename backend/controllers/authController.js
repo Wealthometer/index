@@ -27,3 +27,4 @@ const register = async (req, res, next) => {
         email: user.email,
         role: user.role,
         token: generateToken(user._id, user.role),
+      },
