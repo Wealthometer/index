@@ -28,3 +28,4 @@ const register = async (req, res, next) => {
         role: user.role,
         token: generateToken(user._id, user.role),
       },
+    });
