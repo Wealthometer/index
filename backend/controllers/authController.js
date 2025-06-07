@@ -29,3 +29,4 @@ const register = async (req, res, next) => {
         token: generateToken(user._id, user.role),
       },
     });
+  } catch (err) {
