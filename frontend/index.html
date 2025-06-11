@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOVARA — Shop the Future Tonight</title>
+    <meta name="description"
+        content="NOVARA: a neon-glass demo storefront built to teach CSS animation + REST API integration." />
+
+    <!-- Fonts: Space Grotesk for display, Inter for body, JetBrains Mono for data/labels -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ============ CUSTOM CURSOR GLOW (spotlight effect) ============ -->
+    <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+    <!-- ============ TOASTS ============ -->
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar glass" id="navbar">
+        <div class="nav-inner">
+            <a href="#home" class="logo">
+                <span class="logo-mark">◆</span>
+                <span class="gradient-text">NOVARA</span>
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#shop">Shop</a>
+                <a href="#categories">Categories</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#newsletter">Drop List</a>
+                <a href="#" id="apiDocsLink">API</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span class="api-badge" id="apiBadge" title="Backend connection status">
+                    <span class="dot" id="apiDot"></span>
+                    <span id="apiBadgeText">Checking API…</span>
+                </span>
+
+                <button class="icon-btn" id="authBtn" aria-label="Account">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor"
+                            d="M12 12a5 5 0 1 0-5-5 5 5 0 0 0 5 5Zm0 2c-4.4 0-8 2.2-8 5v1h16v-1c0-2.8-3.6-5-8-5Z" />
+                    </svg>
+                    <span id="authBtnLabel">Sign In</span>
+                </button>
+
+                <button class="icon-btn cart-btn magnetic" id="cartBtn" aria-label="Cart">
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                        <path fill="currentColor"
+                            d="M7 4h-2l-1 2v1h2l3.6 7.6-1.4 2.5c-.5.9.1 2 1.2 2h10.6v-2H9.4l1.1-2h6.7c.8 0 1.5-.4 1.8-1.1L21.9 8H6.2L5.3 6H2V4h5Zm2 15a2 2 0 1 0 2 2 2 2 0 0 0-2-2Zm9 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2Z" />
+                    </svg>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="home">
+        <div class="aurora" aria-hidden="true"></div>
+        <div class="blob blob-a" aria-hidden="true"></div>
+        <div class="blob blob-b" aria-hidden="true"></div>
+        <div class="grid-overlay" aria-hidden="true"></div>
+
+        <div class="hero-inner">
+            <div class="hero-copy">
+                <span class="eyebrow reveal">✦ New drop live now</span>
+                <h1 class="hero-title reveal">
+                    <span class="gradient-text-flow">Shop the future,</span><br>
+                    tonight only.
+                </h1>
+                <p class="hero-sub reveal">
+                    Search: <span class="typewriter" id="typewriter"></span><span class="caret">|</span>
+                </p>
+                <p class="hero-desc reveal">
+                    NOVARA is a night market of near-future gear — audio, wearables, streetwear and
+                    light-based objects, dropped in small batches. This storefront is wired to a real
+                    Express + MongoDB API underneath, so every click below is an actual network call.
+                </p>
+                <div class="hero-actions reveal">
+                    <a href="#shop" class="btn btn-primary magnetic"><span>Browse the drop</span></a>
+                    <button class="btn btn-ghost magnetic" id="howItWorksBtn"><span>How this demo works</span></button>
+                </div>
+                <div class="hero-stats reveal">
+                    <div><strong id="statProducts">—</strong><span>live products</span></div>
+                    <div><strong>4</strong><span>REST endpoints wired</span></div>
+                    <div><strong>0ms</strong><span>frameworks used</span></div>
+                </div>
+            </div>
+
+            <div class="hero-visual reveal" id="heroVisual">
+                <div class="tilt-card glass hero-card" id="heroTiltCard">
+                    <div class="hero-card-shine"></div>
+                    <span class="chip chip-glow">Featured</span>
+                    <div class="hero-card-img-wrap">
+                        <img id="heroCardImg" src="" alt="Featured product" />
+                    </div>
+                    <div class="hero-card-info">
+                        <h3 id="heroCardName">Loading…</h3>
+                        <p id="heroCardDesc">Fetching a hero item from the API…</p>
+                        <div class="hero-card-row">
+                            <span class="price" id="heroCardPrice">$—</span>
+                            <button class="btn btn-small btn-primary" id="heroCardAdd">Add to cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="floating-chip chip-1">GET /api/products</div>
+                <div class="floating-chip chip-2">JWT secured</div>
+                <div class="floating-chip chip-3">MongoDB · Express</div>
+            </div>
+        </div>
+
+        <a href="#logos" class="scroll-cue" aria-hidden="true"><span></span></a>
+    </section>
+
+    <!-- ============ MARQUEE OF TAGS ============ -->
+    <section class="marquee-section" id="logos">
+        <div class="marquee">
+            <div class="marquee-track" id="marqueeTrack"><!-- filled by JS, duplicated for seamless loop --></div>
+        </div>
+    </section>
+
+    <!-- ============ CATEGORIES ============ -->
+    <section class="section" id="categories">
+        <div class="section-head reveal">
+            <span class="eyebrow">Browse</span>
+            <h2>Pick a lane</h2>
+            <p>Filtering here hits <code>GET /api/products?category=</code> live.</p>
+        </div>
+        <div class="category-row reveal" id="categoryRow">
+            <button class="chip-btn active" data-category="">All</button>
+            <!-- more injected by JS -->
+        </div>
+    </section>
+
+    <!-- ============ SHOP / PRODUCT GRID ============ -->
+    <section class="section" id="shop">
+        <div class="section-head split reveal">
+            <div>
+                <span class="eyebrow">The drop</span>
+                <h2>Everything, live from the API</h2>
+            </div>
+            <div class="shop-controls">
+                <div class="search-wrap glass">
+                    <svg viewBox="0 0 24 24" width="16" height="16">
+                        <path fill="currentColor" d="m21 21-4.3-4.3M19 11a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" fill="none"
+                            stroke="currentColor" stroke-width="2" />
+                    </svg>
+                    <input type="text" id="searchInput" placeholder="Search products…" />
+                </div>
+                <select id="sortSelect" class="glass">
+                    <option value="new">Newest</option>
+                    <option value="price-asc">Price: low → high</option>
+                    <option value="price-desc">Price: high → low</option>
+                    <option value="name">Name A–Z</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- shimmer skeletons injected while loading, then real/mocked product cards -->
+        </div>
+
+        <div class="grid-footer reveal">
+            <button class="btn btn-ghost magnetic" id="loadMoreBtn">Load more</button>
+        </div>
+    </section>
+
+    <!-- ============ FEATURE STRIP ============ -->
+    <section class="section feature-strip">
+        <div class="feature-card glass reveal">
+            <div class="feature-icon">⚡</div>
+            <h3>Real fetch calls</h3>
+            <p>Every card here comes from <code>GET /api/products</code>. Open devtools → Network to watch it.</p>
+        </div>
+        <div class="feature-card glass reveal">
+            <div class="feature-icon">🔐</div>
+            <h3>JWT auth</h3>
+            <p>Sign in hits <code>/api/auth/login</code>, stores a token, then orders send it as a Bearer header.</p>
+        </div>
+        <div class="feature-card glass reveal">
+            <div class="feature-icon">🛰️</div>
+            <h3>Graceful demo mode</h3>
+            <p>No backend running? The site quietly swaps in local mock data so the UI still teaches.</p>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS MARQUEE ============ -->
+    <section class="section" id="reviews">
+        <div class="section-head reveal">
+            <span class="eyebrow">Word on the street</span>
+            <h2>What the night market says</h2>
+        </div>
+        <div class="marquee reviews-marquee reveal">
+            <div class="marquee-track marquee-track-slow" id="reviewsTrack"></div>
+        </div>
+    </section>
+
+    <!-- ============ NEWSLETTER ============ -->
+    <section class="newsletter" id="newsletter">
+        <div class="aurora aurora-2" aria-hidden="true"></div>
+        <div class="newsletter-inner reveal">
+            <h2 class="gradient-text-flow">Get the next drop first</h2>
+            <p>No spam — just a note when new gear lands. This form is local-only (no endpoint for it in the API), a
+                good exercise for students to add one.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" required placeholder="you@domain.com" id="newsletterEmail" />
+                <button type="submit" class="btn btn-primary magnetic"><span>Notify me</span></button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">◆</span>
+                <span class="gradient-text">NOVARA</span>
+                <p>A teaching demo: CSS animation techniques wired to a real Express/MongoDB REST API.</p>
+            </div>
+            <div class="footer-cols">
+                <div>
+                    <h4>Endpoints used</h4>
+                    <ul class="mono-list">
+                        <li>GET /api/products</li>
+                        <li>GET /api/products/:id</li>
+                        <li>POST /api/auth/register</li>
+                        <li>POST /api/auth/login</li>
+                        <li>POST /api/orders</li>
+                        <li>GET /api/orders/my-orders</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>CSS techniques</h4>
+                    <ul class="mono-list">
+                        <li>Glassmorphism cards</li>
+                        <li>3D tilt + magnetic buttons</li>
+                        <li>Aurora + morphing blobs</li>
+                        <li>Gradient-flow text</li>
+                        <li>Infinite marquee</li>
+                        <li>Shimmer skeletons</li>
+                        <li>Spotlight cursor</li>
+                        <li>Scroll reveals</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 NOVARA — built for learning, not for sale.</span>
+        </div>
+    </footer>
+
+    <!-- ============ CART DRAWER ============ -->
+    <div class="overlay" id="overlay"></div>
+    <aside class="drawer" id="cartDrawer">
+        <div class="drawer-head">
+            <h3>Your bag</h3>
+            <button class="icon-btn" id="closeCart">✕</button>
+        </div>
+        <div class="drawer-body" id="cartItems"><!-- injected --></div>
+        <div class="drawer-foot">
+            <div class="drawer-total">
+                <span>Total</span>
+                <strong id="cartTotal">$0.00</strong>
+            </div>
+            <button class="btn btn-primary btn-full magnetic" id="checkoutBtn"><span>Checkout · POST
+                    /api/orders</span></button>
+            <p class="drawer-hint" id="cartHint"></p>
+        </div>
+    </aside>
+
+    <!-- ============ AUTH MODAL ============ -->
+    <div class="modal-backdrop" id="authBackdrop">
+        <div class="modal glass" id="authModal">
+            <button class="icon-btn modal-close" id="closeAuth">✕</button>
+            <div class="modal-tabs">
+                <button class="tab-btn active" data-tab="login">Sign in</button>
+                <button class="tab-btn" data-tab="register">Create account</button>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <label>Email <input type="email" id="loginEmail" required placeholder="you@domain.com" /></label>
+                <label>Password <input type="password" id="loginPassword" required placeholder="••••••••" /></label>
+                <button class="btn btn-primary btn-full magnetic" type="submit"><span>Sign in</span></button>
+                <p class="form-error" id="loginError"></p>
+            </form>
+
+            <form id="registerForm" class="auth-form hidden">
+                <label>Name <input type="text" id="registerName" required placeholder="Ada Lovelace" /></label>
+                <label>Email <input type="email" id="registerEmail" required placeholder="you@domain.com" /></label>
+                <label>Password <input type="password" id="registerPassword" required minlength="6"
+                        placeholder="min. 6 characters" /></label>
+                <button class="btn btn-primary btn-full magnetic" type="submit"><span>Create account</span></button>
+                <p class="form-error" id="registerError"></p>
+            </form>
+
+            <p class="modal-note">Backend offline? Auth calls fail gracefully and explain why — check the console.</p>
+        </div>
+    </div>
+
+    <!-- ============ QUICK VIEW MODAL ============ -->
+    <div class="modal-backdrop" id="quickBackdrop">
+        <div class="modal glass quick-modal" id="quickModal">
+            <button class="icon-btn modal-close" id="closeQuick">✕</button>
+            <div class="quick-grid">
+                <div class="quick-img-wrap">
+                    <img id="quickImg" src="" alt="" />
+                </div>
+                <div class="quick-info">
+                    <span class="chip" id="quickCategory">Category</span>
+                    <h3 id="quickName">Product name</h3>
+                    <p id="quickDesc">Description…</p>
+                    <div class="quick-meta">
+                        <span class="price" id="quickPrice">$0</span>
+                        <span class="stock" id="quickStock">In stock</span>
+                    </div>
+                    <div class="qty-row">
+                        <button id="qtyMinus" class="qty-btn">−</button>
+                        <span id="qtyValue">1</span>
+                        <button id="qtyPlus" class="qty-btn">+</button>
+                    </div>
+                    <button class="btn btn-primary btn-full magnetic" id="quickAddBtn"><span>Add to bag</span></button>
+                    <p class="quick-source" id="quickSource"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HOW IT WORKS MODAL ============ -->
+    <div class="modal-backdrop" id="howBackdrop">
+        <div class="modal glass how-modal">
+            <button class="icon-btn modal-close" id="closeHow">✕</button>
+            <h3>How this demo is wired</h3>
+            <ol class="how-list">
+                <li><strong>Frontend:</strong> plain HTML/CSS/JS — <code>index.html</code>, <code>style.css</code>,
+                    <code>app.js</code>. No build step, no framework.</li>
+                <li><strong>Backend:</strong> the Express + MongoDB API you uploaded (<code>authRoutes</code>,
+                    <code>productRoutes</code>, <code>orderRoutes</code>).</li>
+                <li><strong>Connection:</strong> <code>app.js</code> calls <code>API_BASE</code> (default
+                    <code>http://localhost:5000/api</code>). Change that one constant to point anywhere.</li>
+                <li><strong>Fallback:</strong> if <code>/api/health</code> doesn't respond, the site switches to local
+                    mock data automatically — same UI code path either way.</li>
+                <li><strong>Auth:</strong> login/register store the returned JWT in <code>localStorage</code>; the order
+                    request sends it back as <code>Authorization: Bearer &lt;token&gt;</code>.</li>
+            </ol>
+            <p>Run the API with <code>npm install && npm run dev</code> (needs a <code>MONGO_URI</code> in
+                <code>.env</code>), then reload this page — the badge in the navbar will flip to "Live API".</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
