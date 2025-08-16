@@ -23,3 +23,4 @@ const register = async (req, res, next) => {
       success: true,
       data: {
         _id: user._id,
+        name: user.name,
