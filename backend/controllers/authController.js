@@ -22,3 +22,4 @@ const register = async (req, res, next) => {
     res.status(201).json({
       success: true,
       data: {
+        _id: user._id,
