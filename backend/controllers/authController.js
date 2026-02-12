@@ -17,3 +17,4 @@ const register = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'User with this email already exists' });
     }
 
+    const user = await User.create({ name, email, password });
