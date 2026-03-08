@@ -13,3 +13,4 @@ const register = async (req, res, next) => {
     }
 
     const existingUser = await User.findOne({ email });
+    if (existingUser) {
