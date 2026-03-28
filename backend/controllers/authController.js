@@ -12,3 +12,4 @@ const register = async (req, res, next) => {
       return res.status(400).json({ success: false, message: 'Please provide name, email and password' });
     }
 
+    const existingUser = await User.findOne({ email });
