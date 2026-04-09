@@ -11,3 +11,4 @@ const register = async (req, res, next) => {
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: 'Please provide name, email and password' });
     }
+
