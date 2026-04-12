@@ -5,3 +5,4 @@ const generateToken = require('../utils/generateToken');
 // @route   POST /api/auth/register
 // @access  Public
 const register = async (req, res, next) => {
+  try {
