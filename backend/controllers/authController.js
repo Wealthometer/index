@@ -6,3 +6,4 @@ const generateToken = require('../utils/generateToken');
 // @access  Public
 const register = async (req, res, next) => {
   try {
+    const { name, email, password } = req.body;
