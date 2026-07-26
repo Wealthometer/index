@@ -30,3 +30,4 @@ app.use('/api/orders', orderRoutes);
 
 // Error handling (must be last)
 app.use(notFound);
+app.use(errorHandler);
