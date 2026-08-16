@@ -21,3 +21,4 @@ if (process.env.NODE_ENV !== 'production') {
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'API is running' });
+});
