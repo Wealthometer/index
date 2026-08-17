@@ -22,3 +22,4 @@ if (process.env.NODE_ENV !== 'production') {
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'API is running' });
 });
+
