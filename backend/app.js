@@ -24,3 +24,4 @@ app.get('/api/health', (req, res) => {
 });
 
 // Routes
+app.use('/api/auth', authRoutes);
