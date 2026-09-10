@@ -4,9 +4,9 @@ $commitMessage = "randoms"
 
 # Define specific dates to process (year-month-day format)
 $specificDates = @(
-    Get-Date "2025-03-13",
-    Get-Date "2025-07-10",
-    Get-Date "2025-07-29"
+    (Get-Date "2025-03-13")
+    (Get-Date "2025-07-10")
+    (Get-Date "2025-07-29")
 )
 
 $totalDays = $specificDates.Count
@@ -60,4 +60,4 @@ foreach ($currentDate in $specificDates) {
 }
 
 Write-Host "`nBackfill complete! Restoring today's date..." -ForegroundColor Green
-Set-Date -Date (Get-Date)
+Set-Date -Date (Get-Date) 
