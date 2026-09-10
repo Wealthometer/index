@@ -60,4 +60,4 @@ foreach ($currentDate in $specificDates) {
 }
 
 Write-Host "`nBackfill complete! Restoring today's date..." -ForegroundColor Green
-Set-Date -Date (Get-Date) 
+Set-Date -Date (Get-Date)
