@@ -1,4 +1,6 @@
-Random line 0 with content: JvmKuORUab
-Random line 1 with content: HBboKvNGMV
-Random line 2 with content: VmfJntqTXw
-Random line 3 with content: tusQpJKdwE
+{
+    "id": 127,
+    "timestamp": "2026-09-10T23:53:36",
+    "data": "SBytvocNOHPhAbpkYfRn",
+    "value": 25
+}
