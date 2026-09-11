@@ -1,6 +1,6 @@
-Random line 0 with content: jthfuywnSz
-Random line 1 with content: xcrzPdKUZD
-Random line 2 with content: PthxvoDNaQ
-Random line 3 with content: PEsUexTDmd
-Random line 4 with content: lKqPeGOkFg
-Random line 5 with content: fshSBJxPgj
+{
+    "id": 666,
+    "timestamp": "2026-09-11T01:50:28",
+    "data": "EkXLmDUpIjbSoHgJdFOe",
+    "value": 71
+}
