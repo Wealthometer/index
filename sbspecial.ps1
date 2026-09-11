@@ -4,9 +4,9 @@ $commitMessage = "randoms"
 
 # Define specific dates to process (year-month-day format)
 $specificDates = @(
-    (Get-Date "2025-03-13")
-    (Get-Date "2025-07-10")
-    (Get-Date "2025-07-29")
+    (Get-Date "2026-03-13")
+    (Get-Date "2026-07-10")
+    (Get-Date "2026-07-29")
 )
 
 $totalDays = $specificDates.Count

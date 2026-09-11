@@ -1,6 +1,6 @@
 # Configuration
 $commitMessage = "Auto-generated commit"
-$delaySeconds = 5  # Delay between iterations
+$delaySeconds = 0  # Delay between iterations
 
 # Function to generate random content
 function Get-RandomContent {
