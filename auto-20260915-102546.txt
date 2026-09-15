@@ -1,6 +1,0 @@
-{
-    "id": 498,
-    "timestamp": "2026-09-15T10:25:46",
-    "data": "pYsEPVrlFBTijhJvxSGH",
-    "value": 83
-}
