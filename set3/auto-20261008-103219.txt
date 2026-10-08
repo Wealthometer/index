@@ -1,0 +1,6 @@
+{
+    "id": 258,
+    "timestamp": "2026-10-08T10:32:19",
+    "data": "MqLkmnjgahxIzXVuYJPe",
+    "value": 98
+}
