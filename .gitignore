@@ -1,1 +1,5 @@
 /backend/node_modules
+
+# Environment secrets
+.env
+backend/.env
