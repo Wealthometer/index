@@ -1,0 +1,6 @@
+{
+    "id": 404,
+    "timestamp": "2026-11-27T12:25:33",
+    "data": "PzaSHsOmoqDUEyJdGIcT",
+    "value": 18
+}
